@@ -15,6 +15,7 @@ public class Code03_SmallerEquelBigger {
 
     /**
      * 对链表的操作一定要注意边界问题
+     * 第一种方法，先把链表的元素放到数组里面，再对数组做荷兰国旗问题求解
      * @param head
      * @param pivot
      * @return
@@ -76,4 +77,75 @@ public class Code03_SmallerEquelBigger {
         nodes[index] = nodes[i];
         nodes[i] = temp;
     }
+
+    public static Node listPartition2(Node head ,int pivot){
+        if (head == null || head.next == null){
+            return head;
+        }
+        Node sHead = null;
+        Node sTail = null;
+        Node eHead = null;
+        Node eTail = null;
+        Node gHead = null;
+        Node gTail = null;
+
+        Node cur  = head;
+        while (cur != null) {
+            if (cur.v < pivot){
+                if (sHead == null){
+                    sHead = sTail = cur;
+                }else {
+                    sTail.next = cur;
+                    sTail = sTail.next;
+                }
+
+            }
+
+            if (cur.v == pivot){
+                if (eHead == null){
+                    eHead = eTail = cur;
+                }else {
+                    eTail.next = cur;
+                    eTail = eTail.next;
+                }
+
+            }
+
+            if (cur.v == pivot){
+                if (gHead == null){
+                    gHead = gTail = cur;
+                }else {
+                    gTail.next = cur;
+                    gTail = gTail.next;
+                }
+
+            }
+            cur = cur.next;
+
+        }
+
+       if (sTail  != null){
+           sTail.next = (eHead==null) ? gHead:eHead;
+           return sHead;
+       }
+       if (sHead == null){
+           if (eHead != null){
+               eTail.next = gHead;
+               return eHead;
+           }else {
+               return gHead;
+           }
+       }
+
+
+
+
+
+    return null;
+
+    }
+
+
+
+
 }
