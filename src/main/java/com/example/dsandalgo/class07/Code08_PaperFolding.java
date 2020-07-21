@@ -20,6 +20,15 @@ public class Code08_PaperFolding {
 
     }
 
+    /**
+     * 二叉树 递归序 每个节点都会被经过3次
+     * 模拟二叉树的中序遍历过程
+     * 每次折叠都会形成 二叉树左孩子凹 右孩子凸
+     *
+     * @param i
+     * @param n
+     * @param b
+     */
     private static void process(int i, int n, boolean b) {
         if (i > n){
             return;
