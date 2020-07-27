@@ -1,7 +1,9 @@
 package com.example.dsandalgo.class09;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.PriorityQueue;
+import java.util.Set;
 
 /**
  * 会议安排
@@ -31,7 +33,9 @@ public class Code04_BestArrange {
         if (list ==null || list.size() ==0){
             return 0;
         }
-
+        Set<Integer> set = new HashSet<>();
+        int timeEnd =0;
+        int max = process(list,set,timeEnd);
 
 
 
@@ -39,6 +43,22 @@ public class Code04_BestArrange {
 
         return 0;
 
+    }
+
+    private static int process(List<Program> list, Set<Integer> set, int timeEnd) {
+        if (set.size() == list.size()){
+            return set.size();
+        }else{
+            int ans = Integer.MIN_VALUE;
+            for (int i = 0; i < list.size(); i++) {
+                if (!set.contains(list.get(i)) && timeEnd <= list.get(i).start){
+                    set.add(i);
+                    ans =Math.max(ans,process(list,set,list.get(i).end));
+                    set.remove(i);
+                }
+            }
+        return ans;
+        }
     }
 
 }
