@@ -1,9 +1,6 @@
 package com.example.dsandalgo.class09;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.PriorityQueue;
-import java.util.Set;
+import java.util.*;
 
 /**
  * 会议安排
@@ -29,35 +26,67 @@ public class Code04_BestArrange {
         }
     }
 
-    public static int bestArrage1(List<Program> list){
-        if (list ==null || list.size() ==0){
+    public static int bestArrage1(Program[] arr ){
+        if (arr ==null || arr.length==0){
             return 0;
         }
-        Set<Integer> set = new HashSet<>();
         int timeEnd =0;
-        int max = process(list,set,timeEnd);
-
-
-
-
-
+        int max = process(arr,0,timeEnd);
         return 0;
 
     }
 
-    private static int process(List<Program> list, Set<Integer> set, int timeEnd) {
-        if (set.size() == list.size()){
-            return set.size();
+    private static int process(Program[] arr, int num, int timeEnd) {
+        if (arr.length == 0){
+            return num;
         }else{
-            int ans = Integer.MIN_VALUE;
-            for (int i = 0; i < list.size(); i++) {
-                if (!set.contains(list.get(i)) && timeEnd <= list.get(i).start){
-                    set.add(i);
-                    ans =Math.max(ans,process(list,set,list.get(i).end));
-                    set.remove(i);
+            int max = num;
+            for (int i = 0; i < arr.length; i++) {
+                if (arr[i].start >= timeEnd){
+                    Program[] next =copyButExcept(arr,i);
+                    int process = process(next, num + 1, arr[i].end);
+                    max= Math.max(process,max);
                 }
             }
+            return max;
+        }
+    }
+
+    private static Program[] copyButExcept(Program[] arr, int i) {
+        Program[] ans = new Program[arr.length -1];
+        int index = 0;
+        for (int j = 0; j < arr.length; j++) {
+            if (j !=i){
+                ans[index++] = ans[j];
+            }
+        }
         return ans;
+    }
+
+
+    public static int bestArrange2(Program[] arr){
+        if (arr == null || arr.length ==0){
+            return 0;
+        }
+        Arrays.sort(arr,new MyComparator());
+        int ans = 0;
+        int timeEnd = 0;
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i].start >timeEnd){
+                ans ++;
+                timeEnd = arr[i].end;
+            }
+        }
+
+
+        return ans;
+    }
+
+
+    public static class MyComparator implements Comparator<Program>{
+        @Override
+        public int compare(Program o1, Program o2) {
+            return o1.end - o2.end;
         }
     }
 
