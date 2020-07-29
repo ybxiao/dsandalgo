@@ -1,9 +1,5 @@
 package com.example.dsandalgo.juc;
 
-import jdk.nashorn.internal.ir.CallNode;
-
-import java.util.concurrent.Executors;
-
 public class Test_001 {
     public static void main(String[] args){
 
