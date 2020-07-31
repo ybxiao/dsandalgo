@@ -2,27 +2,31 @@ package com.example.dsandalgo.class10;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Set;
 import java.util.Stack;
 
 /**
- * created on 2020/7/30.
- * time: 16:56
- * 并查集，增删改O(1)的牛逼算法
- * @author yibo.xiao
+ *
+ *1）总是从权值最小的边开始考虑，依次考察权值依次变大的边
+ * 2）当前的边要么进入最小生成树的集合，要么丢弃
+ * 3）如果当前的边进入最小生成树的集合中不会形成环，就要当前边
+ * 4）如果当前的边进入最小生成树的集合中会形成环，就不要当前边
+ * 5）考察完所有边之后，最小生成树的集合也得到了
+ *
+ *
+ *
  */
+public class Code04_Kruskal {
 
 
-public class Code01_UnionFind {
-
-    public static class Node<V> {
-        private V v ;
-
+    public static class Node<V>{
+        public V  v;
         public Node(V v){
             this.v = v;
         }
 
-    }
 
+    }
     public static class UnionSet<V>{
         private HashMap<V,Node<V>> nodes;
         private HashMap<Node<V>,Node<V>> parentMap;
@@ -30,7 +34,7 @@ public class Code01_UnionFind {
 
         public UnionSet(List<V> values){
             for (V v:
-                 values) {
+                    values) {
                 Node node = new Node(v);
                 nodes.put(v,node);
                 parentMap.put(node,node);
@@ -68,26 +72,26 @@ public class Code01_UnionFind {
                 return;
             }
 
-        if (!isSameSet(v1,v2)){
-            Node f1 = findFather(v1);
+            if (!isSameSet(v1,v2)){
+                Node f1 = findFather(v1);
 
-            Node f2 = findFather(v2);
+                Node f2 = findFather(v2);
 
-            Integer size1 = sizeMap.get(f1);
-            Integer size2 = sizeMap.get(f2);
+                Integer size1 = sizeMap.get(f1);
+                Integer size2 = sizeMap.get(f2);
 
-            if (size1 < size2){
-                parentMap.put(f1,f2);
-                sizeMap.put(f2,size1+size2);
-                sizeMap.remove(f1);
-            }else{
-                parentMap.put(f2,f1);
-                sizeMap.put(f1,size1+size2);
-                sizeMap.remove(f2);
+                if (size1 < size2){
+                    parentMap.put(f1,f2);
+                    sizeMap.put(f2,size1+size2);
+                    sizeMap.remove(f1);
+                }else{
+                    parentMap.put(f2,f1);
+                    sizeMap.put(f1,size1+size2);
+                    sizeMap.remove(f2);
+
+                }
 
             }
-
-        }
 
         }
 
@@ -95,5 +99,11 @@ public class Code01_UnionFind {
     }
 
 
+    public static Set<Edge>  kruskalMST(Graph graph){
 
+
+
+        return null;
+
+    }
 }
