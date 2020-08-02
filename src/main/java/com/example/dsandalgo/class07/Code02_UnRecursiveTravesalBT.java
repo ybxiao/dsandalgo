@@ -50,6 +50,8 @@ public class Code02_UnRecursiveTravesalBT {
                 }else{
                     Node pop = stack.pop();
                     System.out.println(pop.value);
+                    // 相当于我每弹出一个节点，就把当前的指针指向它的右孩子。
+                    // 如果然后在右子树不为空，在右子树上重复之前放左节点的步骤
                     head = pop.right;
 
                 }
