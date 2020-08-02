@@ -1,9 +1,8 @@
 package com.example.dsandalgo.class10;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Set;
-import java.util.Stack;
+import org.springframework.util.CollectionUtils;
+
+import java.util.*;
 
 /**
  *
@@ -97,13 +96,32 @@ public class Code04_Kruskal {
 
 
     }
+    public static class MyComparator implements Comparator<Edge>{
+
+        @Override
+        public int compare(Edge o1, Edge o2) {
+            return o1.weight - o2.weight;
+        }
+    }
 
 
     public static Set<Edge>  kruskalMST(Graph graph){
+        List<Edge> edges = graph.edges;
+        Set<Edge> result = new HashSet<>();
+        List list = CollectionUtils.arrayToList(graph.nodes.values().stream().toArray());
+        UnionSet<com.example.dsandalgo.class10.Node> edgeUnionSet = new UnionSet(list);
+
+        Collections.sort(edges,new MyComparator());
+        for (int i = 0; i < edges.size(); i++) {
+            Edge edge = edges.get(i);
+            if (!edgeUnionSet.isSameSet(edge.from,edge.to)){
+                edgeUnionSet.union(edge.from,edge.to);
+                result.add(edge);
+            }
+        }
 
 
-
-        return null;
+        return result;
 
     }
 }
