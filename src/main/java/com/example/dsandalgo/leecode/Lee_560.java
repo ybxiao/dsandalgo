@@ -11,7 +11,7 @@ import java.util.Map;
  */
 
 
-public class Lee560 {
+public class Lee_560 {
 
     public static int subArraySum(int[] nums,int k){
 
