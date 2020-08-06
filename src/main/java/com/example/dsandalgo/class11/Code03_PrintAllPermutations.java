@@ -30,6 +30,7 @@ public class Code03_PrintAllPermutations {
 
     private static void process(char[] chars, int index, List<String> ans) {
         if (index  == chars.length){
+            ans.add(String.valueOf(chars));
             return;
         }
         for (int i = index ; i <chars.length ; i++) {
