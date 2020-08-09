@@ -1,6 +1,5 @@
 package com.example.dsandalgo.class08;
 
-import org.omg.CosNaming.BindingTypeHelper;
 
 import java.util.*;
 
@@ -61,6 +60,7 @@ public class Code08_MaxDistance {
 
     }
 
+    //找到所有节点的头结点 放入parentMap 里面
     private static Map<Node, Node> getParentMap(Node head) {
         Map<Node,Node> map = new HashMap<>();
         if (head  != null){
@@ -70,6 +70,11 @@ public class Code08_MaxDistance {
         return map;
     }
 
+    /**
+     * 遍历添充parentMap
+     * @param head
+     * @param map
+     */
     private static void filterMap(Node head, Map<Node, Node> map) {
         if (head.left != null){
             map.put(head.left ,head);
