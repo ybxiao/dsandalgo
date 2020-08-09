@@ -19,6 +19,7 @@ package com.example.dsandalgo.class11;
 
 public class Code07_Knapsack {
 
+    //暴力求解主函数
     public static int getMaxValue(int[] w,int[] v, int bags){
 
         return  process(w,v,0,0,bags);
@@ -49,6 +50,49 @@ public class Code07_Knapsack {
         return Math.max(p1,p2);
 
 
+    }
+
+
+    /**
+     * 动态规化方法
+     * dp[0][bags]
+     * @param w
+     * @param v
+     * @param bags
+     * @return
+     */
+    private static int dpWay(int[] w,int[] v, int bags){
+        int N =  w.length;
+        int[][] dp = new int[N+1][bags+1];
+
+        for (int i = N-1; i >=0 ; i--) {
+            for (int j = 1; j < bags; j++) {
+
+                //dp[i][j] = ?;
+
+                int p1 =  dp[i+1][j];
+                int p2 = -1;
+                if (w[j] <= bags){
+                    p2 = v[i] + dp[i+1][bags-w[j]];
+                }
+                dp[i][j] =Math.max(p1,p2);
+            }
+
+
+        }
+
+        return dp[0][bags];
+
+
+
+    }
+
+    public static void main(String[] args) {
+        int[] w = new int[]{1,2,3};
+        int[] v = new int[]{2,3,4};
+        int bags = 6;
+
+        getMaxValue(w,v,bags    );
     }
 
 
