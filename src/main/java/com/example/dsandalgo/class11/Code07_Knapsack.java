@@ -22,7 +22,7 @@ public class Code07_Knapsack {
     //暴力求解主函数
     public static int getMaxValue(int[] w,int[] v, int bags){
 
-        return  process(w,v,0,0,bags);
+        return  process1(w,v,0,0,bags);
 
 
     }
@@ -32,17 +32,45 @@ public class Code07_Knapsack {
     //alwayW 表示决策的货物重量
     //bags 是背包的可承重
     //函数返回值表示index上之后的决策带来的价值收益
-    private static int process(int[] w, int[] v, int index, int alwaysW, int bags) {
+    private static int process1(int[] w, int[] v, int index, int alwaysW, int bags) {
         if (alwaysW > bags){
             return -1;
         }
         if (index == w.length){
             return 0;
         }
-        int p1 = process(w, v, index + 1, alwaysW, bags);
+        int p1 = process1(w, v, index + 1, alwaysW, bags);
 
         //挑选index位置上的货物
-        int casePick = process(w, v, index + 1, alwaysW + w[index], bags);
+        int casePick = process1(w, v, index + 1, alwaysW + w[index], bags);
+        int p2 =-1;
+        if (casePick !=-1){
+            p2 = casePick + v[index];
+        }
+        return Math.max(p1,p2);
+
+
+    }
+
+
+    //0..index-1已经决策完毕
+    //在index上进行决策
+    //rest表示剩余的背包容量
+    //函数返回值表示index上之后的决策带来的价值收益
+    // 返回-1 没有方案
+
+    private static int process2(int[] w, int[] v, int index, int rest) {
+
+        if (rest <= 0){
+            return -1;
+        }
+        if (index == w.length){
+            return 0;
+        }
+        int p1 = process2(w, v, index + 1,rest);
+
+        //挑选index位置上的货物
+        int casePick = process2(w, v, index + 1, rest - w[index]);
         int p2 =-1;
         if (casePick !=-1){
             p2 = casePick + v[index];

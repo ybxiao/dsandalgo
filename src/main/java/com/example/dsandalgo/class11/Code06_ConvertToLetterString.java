@@ -1,5 +1,7 @@
 package com.example.dsandalgo.class11;
 
+import org.apache.logging.log4j.util.Strings;
+
 /**
  * 从左往右的尝试：
  * 例题：
@@ -17,9 +19,11 @@ public class Code06_ConvertToLetterString {
         return process(str.toCharArray(),0);
     }
 
-    //0..index已经处理完毕
-    //处理index往后的字符如何转换
-    //
+
+
+    // str[0...i-1]已经转化完了，固定了
+    // i之前的位置，如何转化已经做过决定了, 不用再关心
+    // i... 有多少种转化的结果
 
     private static int process(char[] strs, int index) {
         if (index ==  strs.length){
@@ -44,4 +48,38 @@ public class Code06_ConvertToLetterString {
         }
         return process(strs,index+1);
     }
+
+    //动态规划求解
+    public static int dpway(String str){
+        if (str == null || str.length() ==0){
+            return 0;
+        }
+        int n =  str.length();
+        char[] chars = str.toCharArray();
+        int[] dp = new int[n+1];
+        dp[n] =1;
+        for (int i = n-1; i >= 0; i--) {
+            if (chars[i] == '0'){
+                return 0;
+            }
+            if (chars[i] == '1'){
+                int res=  dp[i+1];
+                if (i +2 < n){
+                    res += dp[i+2 ];
+                }
+                dp[i] = res;
+            }
+            if (chars[i] == '2'){
+                int res = dp[i+1];
+                if (i+2<n && chars[i+2] >= '0' && chars[i+2]<6){
+                    res += dp[i+2];
+                }
+                dp[i] = res;
+        }
+
+
+    }
+        return dp[0];
+
+}
 }
