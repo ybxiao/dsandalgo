@@ -59,14 +59,23 @@ public class Code07_lowestAncestor {
 
     }
 
+    /**
+     * 递归信息封装
+     * 左右子树都这么调用
+     *
+     */
     public static class Info{
 
+        //最低公共祖先
         private Node ans;
+        //在子树上是否发现o1 节点
         private boolean findo1;
+        //在子树上是否发现o2节点
         private boolean findo2;
 
         public Info(Node ans ,boolean findo1 ,boolean findo2){
             this.ans = ans;
+
             this.findo1 = findo1;
             this.findo2 = findo2;
         }
@@ -90,7 +99,7 @@ public class Code07_lowestAncestor {
         Info left = process(head.left, o1,o2);
         Info right = process(head.right,o1,o2);
         Node ans = null;
-        if ((left.findo1 && right.findo2) || (left.findo2 && right.findo2)){
+        if ((left.findo1 && right.findo2) || (left.findo2 && right.findo1)){
             ans = head;
         }
         if (left.findo2 && left.findo1){
