@@ -1,4 +1,4 @@
-package com.example.dsandalgo.class12;
+package com.example.dsandalgo.foundationclass.class12;
 
 public class Copy_Code05_PalindromeSubsequence {
 

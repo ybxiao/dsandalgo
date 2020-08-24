@@ -1,4 +1,4 @@
-package com.example.dsandalgo.class11;
+package com.example.dsandalgo.foundationclass.class11;
 
 /**
  * N皇后问题

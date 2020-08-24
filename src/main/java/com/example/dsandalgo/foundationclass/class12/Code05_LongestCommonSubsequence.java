@@ -1,4 +1,4 @@
-package com.example.dsandalgo.class12;
+package com.example.dsandalgo.foundationclass.class12;
 
 /**
  * 最长公共子序列

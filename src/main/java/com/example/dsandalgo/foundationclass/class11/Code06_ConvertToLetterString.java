@@ -1,6 +1,4 @@
-package com.example.dsandalgo.class11;
-
-import org.apache.logging.log4j.util.Strings;
+package com.example.dsandalgo.foundationclass.class11;
 
 /**
  * 从左往右的尝试：
