@@ -1,10 +1,8 @@
 package com.example.dsandalgo.leecode;
 
-import org.springframework.util.CollectionUtils;
-
 import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
 
 /**
  * created on 2020/8/5.
@@ -74,6 +72,8 @@ public class Lee_874 {
         //[-2,-1,8,9,6]
         //[[-1,3],[0,1],[-1,5],[-2,-4],[5,4],[-2,-3],[5,-1],[1,-1],[5,5],[5,2]]
         System.out.println(robotSim(new int[]{4,-1,4,-2,4},new int[][]{{2,4}}));
+
+        ScheduledExecutorService scheduledExecutorService = Executors.newScheduledThreadPool(1);
     }
 
 
