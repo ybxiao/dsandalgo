@@ -1,5 +1,7 @@
 package com.example.dsandalgo.foundationclass.class06;
 
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Stack;
 
 /**
@@ -83,28 +85,28 @@ public class Code02_isPalindromeList {
             return false;
         }
 
-        Node  n1 =  head;
-        Node n2 = head;
-        while (n2.next != null && n2.next.next != null ){
-            n2 = n2.next.next;
-            n1 = n1.next;
+        Node  slow =  head;
+        Node fast = head;
+        while (fast.next != null && fast.next.next != null ){
+            fast = fast.next.next;
+            slow = slow.next;
 
         }
 
-        n2 = n1.next;
-        n1.next = null;
+        fast = slow.next;
+        slow.next = null;
         Node n3 = null;
-        while (n2 != null){
-            n3 = n2.next;
-            n2.next = n1;
-            n1 = n2;
-            n2 = n3;
+        while (fast != null){
+            n3 = fast.next;
+            fast.next = slow;
+            slow = fast;
+            fast = n3;
         }
         //save the last node
-        n3 = n1 ;
+        n3 = slow ;
         boolean res =  true;
-        while (head != null && n1 !=null){
-            if (head.v != n1.v){
+        while (head != null && slow !=null){
+            if (head.v != slow.v){
                 res =  false;
                 break;
             }
@@ -112,17 +114,16 @@ public class Code02_isPalindromeList {
         }
 
         //recover
-        n1 = n3.next;
+        slow = n3.next;
         n3.next = null;
-        while (n1 != null){
-            n2 = n1.next;
-            n1.next = n3;
-            n3 = n1;
-            n1 = n2;
+        while (slow != null){
+            fast = slow.next;
+            slow.next = n3;
+            n3 = slow;
+            slow = fast;
 
         }
         return res;
-
 
 
 
