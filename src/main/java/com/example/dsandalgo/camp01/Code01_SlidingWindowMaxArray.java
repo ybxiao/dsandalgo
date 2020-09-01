@@ -64,13 +64,13 @@ public class Code01_SlidingWindowMaxArray {
                 qMax.pollLast();
             }
             //注意放的是下标
-            qMax.add(i);
+            qMax.addLast(i);
             if (qMax.peekFirst() == i - w){
                 qMax.pollFirst();
             }
 
             if (i >= w - 1){
-                res[index++] = qMax.peekFirst();
+                res[index++] = arr[qMax.peekFirst()];
             }
 
         }
@@ -142,7 +142,7 @@ public class Code01_SlidingWindowMaxArray {
             int[] ans2 = rightWay(arr, w);
 
             int[] ans3 = gatMaxWindowForX(arr, w);
-            if (!isEqual(ans1, ans3)) {
+            if (!isEqual(ans1, ans2)) {
                 System.out.println("Oops!");
             }
         }
