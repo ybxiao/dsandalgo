@@ -12,9 +12,12 @@ public class BSNearLeft {
         //记录最左的对号
         int index = -1;
         while (L <= R){
-            mid  = L  + (R -L  )>> 2;
 
-            if (sortedArr[mid] < num)  L  = mid +1;
+            mid  = L  + (R -L  )>> 1;
+
+            if (sortedArr[mid] < num)  {
+                L  = mid +1;
+            }
             else if (sortedArr[mid] >= num) {
                 R = mid -1;
                 index = mid;

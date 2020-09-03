@@ -86,7 +86,7 @@ public class Code08_MaxDistance {
         }
     }
 
-    private static void preOrderList(Node head, List<Node> arr) {
+    private static void  preOrderList(Node head, List<Node> arr) {
         if (head == null){
             return;
         }

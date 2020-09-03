@@ -3,7 +3,6 @@ package com.example.dsandalgo.foundationclass.class01;
 public class SelectionSort {
 
 
-
     public void selectionSort(int [] nums){
 
         for (int i = 0; i < nums.length; i++) {
