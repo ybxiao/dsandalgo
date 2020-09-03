@@ -1,6 +1,10 @@
 package com.example.dsandalgo.camp01;
 
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Stack;
+
 /**
  * 单调递归栈
  * 定义：
@@ -21,4 +25,102 @@ package com.example.dsandalgo.camp01;
  *
  */
 public class Code03_MonotonousStack {
+
+    public static int[][] getNearLessNoRepeat(int[] arr){
+        int[][] res =  new int[arr.length][2];
+
+        //栈中元素自底向上依次变小
+        //数组中元素不重复
+        Stack<Integer> stack =  new Stack<>();
+        int right = 0 ;
+        while (right < arr.length){
+
+            while (!stack.isEmpty() && arr[stack.peek()] > arr[right]){
+                Integer popIndex = stack.pop();
+                res[popIndex][0] =  stack.isEmpty() ? -1 : stack.peek();
+                res[popIndex][1] = right;
+            }
+            stack.push(right);
+            right ++;
+        }
+        while (!stack.isEmpty()){
+            Integer pop = stack.pop();
+            res[pop][0] = stack.isEmpty() ? -1 : stack.peek();
+            res[pop][1] =  -1;
+        }
+
+        return res;
+
+    }
+
+    public static int[][] getNearLess(int[] arr){
+        int[][] res =  new int[arr.length][2];
+
+        //栈中元素自底向上依次变小
+        //数组中元素重复
+        Stack<List<Integer>> stack = new Stack<>();
+
+        for (int i = 0; i < arr.length; i++) {
+            while (!stack.isEmpty() && arr[stack.peek().get(0)] > arr[i]){
+                List<Integer> list = stack.pop();
+                int leftIndex = stack.isEmpty()? -1 : stack.pop().get(stack.pop().size() -1);
+
+                for (Integer index : list ) {
+                    res[index][0] = leftIndex;
+                    res[index][1] = i;
+                }
+                if (!stack.isEmpty() && arr[stack.peek().get(0)] == arr[i]){
+                   stack.peek().add(i);
+                }else{
+                    ArrayList<Integer> pushList = new ArrayList<>();
+                    pushList.add(i);
+                    stack.push(pushList);
+                }
+
+            }
+
+
+
+        }
+
+        return res;
+    }
+
+
+    //暴力解法
+    //遍历数组每一个元素，依次向左找和向右找，找到比当前位置小的的第一个元素留存
+
+    public static int[][] rightWay(int[] arr){
+        int[][] res =  new int[arr.length][2];
+        for (int i = 0; i < arr.length; i++) {
+
+            //记录最左的合适位置
+            int leftIndxe = -1;
+            //记录最右的合适位置
+            int rightIndex = -1;
+            int cur = i-1;
+            while (cur > 0){
+                if (arr[cur] < arr[i]){
+                    leftIndxe = cur;
+                    break;
+                }
+                cur --;
+            }
+
+
+            cur = i + 1;
+            while (cur < arr.length){
+                if (arr[cur] < arr[i]){
+                    rightIndex = cur;
+                    break;
+                }
+                cur ++;
+            }
+            res[i][0] = leftIndxe;
+            res[i][1] =  rightIndex;
+
+        }
+        return  res;
+    }
+
 }
