@@ -1,4 +1,4 @@
-package com.example.dsandalgo.camp01;
+package com.example.dsandalgo.camp01.class01;
 
 import java.util.LinkedList;
 
