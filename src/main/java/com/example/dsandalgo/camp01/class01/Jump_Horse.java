@@ -49,6 +49,7 @@ public class Jump_Horse {
         for (int i = 0; i < dp.length; i++) {
             for (int j = 0; j < dp[i].length; j++) {
                 for (int l = 1; l < dp[i][j].length; l++) {
+                    //边界无法准确控制，所以要把限制条件抽想到一个单独的函数里面
                     dp[i][j][l] = getValue(dp,i-2,j+1,l-1)
                             +getValue(dp,x-2,y-1,l-1)
                             +getValue(dp,x+1,y-2,l-1)
@@ -57,10 +58,6 @@ public class Jump_Horse {
                             +getValue(dp,x-1,y-2,l-1)
                             +getValue(dp,x+2,y-1,l-1)
                             +getValue(dp,x+2,y+1,l-1);
-
-
-
-
 
                 }
 
