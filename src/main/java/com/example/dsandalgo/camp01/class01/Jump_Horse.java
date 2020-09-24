@@ -17,7 +17,9 @@ public class Jump_Horse {
         return f(x,y,k);
     }
 
-    //设计递归函数+ f(x-2,y-1,k-1)
+    //设计递归函数
+    //x y 代表的是最终要到达的位置
+    //k  代表要走的步数 有一个隐含条件，当一步也不走的时候，此时马是在（0，0）位置
     private static int f(int x, int y, int k) {
         //base case
         if (k == 0){
