@@ -12,8 +12,8 @@ public class PartitionAndQuickSort {
             return -1;
         }
         int lessEqual = L - 1;
-        int j = R - 1;
-        while (L < j) {
+        int cur  = L ;
+        while (cur < R) {
             if (arr[L] <= arr[R]) {
                 swap(arr, ++lessEqual, L);
             }
