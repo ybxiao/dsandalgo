@@ -54,6 +54,7 @@ public class Code01_SlidingWindowMaxArray {
         if (arr == null  || w < 1 || arr.length < w){
             return null;
         }
+        //滑动窗口里面存放的最大值
         LinkedList<Integer> qMax = new LinkedList<>();
         int[] res =  new int[arr.length - w + 1];
         int index = 0;
