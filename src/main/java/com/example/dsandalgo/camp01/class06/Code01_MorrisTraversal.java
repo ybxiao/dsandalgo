@@ -49,6 +49,7 @@ public class Code01_MorrisTraversal {
             return;
         }
         Node cur  = head;
+        //cur2 代表左树的最右节点
         Node cur2 = null;
 
         while (cur != null){

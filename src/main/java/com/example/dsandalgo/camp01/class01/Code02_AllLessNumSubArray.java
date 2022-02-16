@@ -50,7 +50,7 @@ public class Code02_AllLessNumSubArray {
 
                 right ++;
 
-                //此时right指针挺在了 第一个不满足条件的位置
+                //此时right指针指在了 第一个不满足条件的位置
                 if (maxQueue.peekFirst() - minQueue.peekFirst() > num){
                    break;
                 }
