@@ -1,5 +1,7 @@
 package com.example.dsandalgo.foundationclass.class02;
 
+import java.util.LinkedList;
+
 public class ReversedList {
 
     public Node reverseNode(Node head){
@@ -19,6 +21,27 @@ public class ReversedList {
         return cur;
     }
 
+    public Node reverseNodeV2(Node head){
+        if (head == null || head.next == null){
+            return null;
+        }
+        Node pre = null;
+        Node cur = head;
+        while (cur.next != null){
+            Node T =  cur.next;
+
+            cur.next = pre;
+            T.next = cur;
+            pre = cur;
+            cur = T;
+
+        }
+
+        return cur;
+    }
+
+
+
 
     public DoubleNode reverseDouble(DoubleNode head){
         if (head == null || head.next ==null){return  head;}
@@ -35,7 +58,32 @@ public class ReversedList {
         return cur;
     }
 
-    public static void main(String[] args) {
+    /**
+     * last 指向上一个节点
+     * next 指向下一个节点
+     * @param head
+     * @return
+     */
+    public DoubleNode reverseDoubleV2(DoubleNode head){
+        if (head == null || head.next == null){
+            return head;
+        }
+        DoubleNode pre = null;
+        DoubleNode cur =  head;
+        while (cur.next != null){
+            DoubleNode T =  cur.next;
+            cur.next = pre;
+            cur.last = T;
+            pre = cur;
+            cur = T;
+
+        }
+        return cur;
+
+
+
 
     }
+
+
 }

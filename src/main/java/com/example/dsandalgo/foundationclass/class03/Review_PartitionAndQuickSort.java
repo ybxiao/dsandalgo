@@ -10,9 +10,29 @@ package com.example.dsandalgo.foundationclass.class03;
 
 public class Review_PartitionAndQuickSort {
 
-    //以arr[right]为给定值，对数组arr 从left到right的范围上进行分区
-    //小于arr[right]的在左侧，大于arr[right]的在右侧，=arr[right]的在中间
-    //返回第一个==arr[right]的位置
+    /*
+
+    以arr[right]为给定值，对数组arr 从left到right的范围上进行分区
+    小于arr[right]的在左侧，大于arr[right]的在右侧，=arr[right]的在中间
+    返回第一个==arr[right]的位置上变有序
+    定义小于区域边界 less =  left -1
+    定于大于区域边界 more = right
+
+
+
+    */
+
+
+    /**
+     * 遍历所有元素，当前元素为i
+     * arr[i] 小于或者等于目标元素时： 小于区域往前移动一个，交换当前位置元素和小于区域最后一个元素
+     * i++
+     * arr[i] 大于目标元素时： i++ 往后移动一个
+     * @param arr
+     * @param left
+     * @param right
+     * @return
+     */
     public static int partition(int[] arr, int left ,int right){
         if (arr == null  || left > right){
             return -1;
@@ -32,6 +52,19 @@ public class Review_PartitionAndQuickSort {
         return lessEqual;
     }
 
+    /**
+     * 荷兰国旗partition算法
+     * 以arr[R] 进行partition
+     * 定义左区域边界 less = L-1
+     * 定义右区域边界 more = R
+     * 遍历对待排序的元素
+     *
+     *
+     * @param arr
+     * @param L
+     * @param R
+     * @return
+     */
     public static int[] netherLandsFlag(int[] arr,int L ,int R){
         if (L >= R){
             return  null;
@@ -39,6 +72,7 @@ public class Review_PartitionAndQuickSort {
 
         int less  = L-1;
         int more = R;
+
         while (L < more){
             if (arr[L] <  arr[R]){
                 swap(arr,++less,L++);
@@ -55,6 +89,33 @@ public class Review_PartitionAndQuickSort {
         return new int[]{less+1,more};
 
 
+
+    }
+
+    public static  int[] netherLandsFlagV2(int[] arr , int left , int right){
+        if (left > right){
+            return null;
+        }
+        int less = left -1;
+        int more = right;
+        int index  =  left;
+        while (index < more){
+            if (arr[index] < arr[more]){
+                swap(arr, ++less, index ++);
+            }
+
+            if (arr[index] == arr[more]){
+                index ++;
+            }
+
+            if (arr[index] > arr[more]) {
+                swap(arr, index, --more);
+            }
+
+            swap(arr, index, right);
+        }
+
+        return  new int[]{less+1, more};
 
     }
 
