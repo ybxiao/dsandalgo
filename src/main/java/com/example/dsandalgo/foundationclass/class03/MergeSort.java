@@ -8,6 +8,14 @@ package com.example.dsandalgo.foundationclass.class03;
  */
 public class MergeSort {
 
+    /**
+     * 归并拍下合并过程
+     * @param arr
+     * @param L
+     * @param M
+     * @param R
+     * 假设数组在L...M和M...R上分别有序，让整个数组变有序
+     */
     public void merge(int[] arr,int L ,int M ,int R){
 
         int[] help = new int[R-L+1];
@@ -62,6 +70,7 @@ public class MergeSort {
     }
 
     //迭代
+    //边界条件
     public void mergeSort2(int[] arr){
         if (arr == null || arr.length <2){
             return;
@@ -80,10 +89,12 @@ public class MergeSort {
                 merge(arr,L ,M,R);
                 L = R +1;
             }
-            if (mergesize > N >>2){
+            if (mergesize > (N >>2) ){
                 break;
             }
             mergesize *=2;
         }
     }
+
+
 }

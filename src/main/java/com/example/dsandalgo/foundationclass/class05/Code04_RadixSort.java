@@ -41,8 +41,8 @@ public class Code04_RadixSort {
     }
 
     public int getBit(int v,int i){
-        int  pow =(int) Math.pow(10, i);
-        return (v/pow)%10;
+        int pow = (int) Math.pow(10, i);
+        return (v / pow) % 10;
 
     }
 
@@ -63,5 +63,6 @@ public class Code04_RadixSort {
         return maxbit;
 
     }
+
 
 }
