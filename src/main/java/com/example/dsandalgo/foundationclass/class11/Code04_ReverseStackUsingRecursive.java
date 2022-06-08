@@ -23,6 +23,11 @@ public class Code04_ReverseStackUsingRecursive {
 
     }
 
+    /**
+     * f函数，不用申请任何额外的空间，返回当前栈的栈底元素，其余元素保持不变
+     * @param stack
+     * @return
+     */
     private static int f(Stack<Integer> stack) {
         Integer result = stack.pop();
         if (stack.isEmpty()){
