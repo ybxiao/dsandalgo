@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Test_003 {
 
@@ -17,6 +18,9 @@ public class Test_003 {
     }
 
     public static void main(String[] args) {
+
+
+        //ThreadLocalRandom.getProbe();
         Test_003 c  = new Test_003();
 
         new Thread(()->{
