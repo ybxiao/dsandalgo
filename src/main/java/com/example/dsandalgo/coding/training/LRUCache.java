@@ -1,9 +1,5 @@
 package com.example.dsandalgo.coding.training;
 
-import jdk.internal.org.objectweb.asm.tree.MultiANewArrayInsnNode;
-import org.w3c.dom.NodeList;
-import sun.rmi.runtime.NewThreadAction;
-
 import java.util.HashMap;
 
 /**
@@ -96,6 +92,7 @@ public class LRUCache {
             if (head == null){
                 return null;
             }
+            // 记录一个临时变量
             Node<K,V> res =  head;
             if (head == tail){
                 head = null;

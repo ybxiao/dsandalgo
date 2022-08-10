@@ -53,7 +53,7 @@ public class ReverseNodesInKGroup {
         end = end.next;
         ListNode pre = null;
         ListNode cur = start;
-        ListNode next = null;
+        ListNode next;
         while (cur.next != null){
             next = cur.next;
             cur.next = pre;
@@ -85,6 +85,8 @@ public class ReverseNodesInKGroup {
         node2.next = node3;
         node3.next = node4;
         node4.next = node5;
+
+        reverseKGroup(node1,2);
 
     }
 
