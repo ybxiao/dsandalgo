@@ -45,13 +45,21 @@ public class FindFirstIntersectNode {
         if (head == null || head.next ==null){
             return null;
         }
-        Node fast = head;
-        Node slow = head;
-        while (fast.next != null && fast.next.next != null) {
-
+        Node fast = head.next.next;
+        Node slow = head.next;
+        while (fast != slow  ) {
+            if (fast.next == null || fast.next.next == null){
+                return null;
+            }
+            slow = head.next;
+            fast = head.next.next;
         }
-
-
+        fast = head;
+        while ( fast != slow){
+            fast = fast.next;
+            slow = slow.next;
+        }
+        return slow;
     }
 
 
