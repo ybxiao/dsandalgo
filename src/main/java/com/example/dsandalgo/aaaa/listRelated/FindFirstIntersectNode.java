@@ -34,6 +34,11 @@ public class FindFirstIntersectNode {
     }
 
 
+    public Node getFirstIntersectNode(Node head1, Node head2)  {
+
+    }
+
+
     /**
      * 给一个链表的头节点，判定该链表是否有环
      * 如果有环，返回入环节点
@@ -61,6 +66,8 @@ public class FindFirstIntersectNode {
         }
         return slow;
     }
+
+
 
 
 
