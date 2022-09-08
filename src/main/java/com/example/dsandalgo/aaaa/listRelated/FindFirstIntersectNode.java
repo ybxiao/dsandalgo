@@ -1,5 +1,9 @@
 package com.example.dsandalgo.aaaa.listRelated;
 
+import com.google.common.collect.Sets;
+
+import java.util.HashSet;
+
 /**
  * 给定两个可能有环也可能无环的单链表，头节点head1和head2
  * 请实现一个函数，如果两个链表相交，请返回相交的第一个节点。如果不相交返回null
@@ -35,7 +39,92 @@ public class FindFirstIntersectNode {
 
 
     public Node getFirstIntersectNode(Node head1, Node head2)  {
+        if (head1 == null || head2 == null){
+            return null;
+        }
+        Node loopNode1 = getLoopNode(head1);
+        Node loopNode2 = getLoopNode(head2);
+        if (loopNode1 == null && loopNode2 == null) {
+            return noLoop(head1, head2);
+        }
+        if (loopNode1 != null && loopNode2 != null) {
+            return bothLoop(head1, loopNode1, head2, loopNode2);
+        }
 
+        return null;
+    }
+
+    private Node bothLoop(Node head1, Node loopNode1, Node head2, Node loopNode2) {
+        if (loopNode1 == loopNode2){
+           Node cur1 = head1;
+           Node cur2 = head2;
+           int n = 0;
+           while (cur1 != loopNode1){
+               n++;
+               cur1 =  cur1.next;
+           }
+           while (cur2 !=  loopNode2){
+               n--;
+               cur2 =  cur2.next;
+           }
+           cur1 = n > 0 ? head1 :head1;
+           cur2 = cur1 == head1 ? head2 :head1;
+           while (cur1 != cur2){
+               cur1 = cur1.next;
+               cur2 = cur2.next;
+           }
+           return cur1;
+
+        }else{
+            Node cur1 = loopNode1;
+            while (cur1 != null){
+                cur1 = cur1.next;
+                if (cur1 == loopNode2){
+                    return loopNode1;
+                }
+                if (cur1 == loopNode1){
+                    return null;
+                }
+            }
+        }
+
+
+        return null;
+    }
+
+    private Node noLoop(Node head1, Node head2) {
+        Node cur1 = head1;
+        Node cur2 = head2;
+        int n = 1;
+        while (cur1.next != null){
+            n ++;
+            cur1 =  cur1.next;
+        }
+        while(cur2.next != null){
+            n --;
+            cur2 = cur2.next;
+        }
+        if (cur1 != cur2){
+            return null;
+        }
+        //较长的链表用cur1，较短的哪个用cur2
+        if (n < 0){
+            cur1 = head2;
+        }
+        cur2 = cur1 == head1 ? head2 : head1;
+        n = Math.abs(n);
+        while ( n > 0){
+            cur1 = cur1.next;
+            n--;
+        }
+        while (cur1 != cur2){
+            if (cur1 == null){
+                return null;
+            }
+            cur1 = cur1.next;
+            cur2 = cur2.next;
+        }
+        return cur1;
     }
 
 
@@ -65,6 +154,19 @@ public class FindFirstIntersectNode {
             slow = slow.next;
         }
         return slow;
+    }
+
+    public static void main(String[] args) {
+        HashSet<Long> set1 = Sets.newHashSet();
+        HashSet<Object> set2 = Sets.newHashSet();
+        for (int i = 0; i < 1000; i++) {
+            set1.add((long)(Math.random() * 1000000));
+            set2.add((long)(Math.random() * 1000000));
+        }
+        System.out.println(Sets.difference(set1, set2).size());
+
+
+
     }
 
 
