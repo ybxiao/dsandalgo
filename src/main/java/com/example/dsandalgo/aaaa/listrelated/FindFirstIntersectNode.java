@@ -1,4 +1,4 @@
-package com.example.dsandalgo.aaaa.listRelated;
+package com.example.dsandalgo.aaaa.listrelated;
 
 import com.google.common.collect.Sets;
 

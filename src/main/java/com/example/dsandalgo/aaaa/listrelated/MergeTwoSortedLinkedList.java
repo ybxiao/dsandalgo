@@ -1,4 +1,4 @@
-package com.example.dsandalgo.aaaa.listRelated;
+package com.example.dsandalgo.aaaa.listrelated;
 
 /**
  * 合并两个有序列表

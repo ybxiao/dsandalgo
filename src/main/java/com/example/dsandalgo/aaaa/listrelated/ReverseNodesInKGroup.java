@@ -1,4 +1,4 @@
-package com.example.dsandalgo.aaaa.listRelated;
+package com.example.dsandalgo.aaaa.listrelated;
 /**
  * https://leetcode.com/problems/reverse-nodes-in-k-group/
  * https://leetcode-cn.com/problems/reverse-nodes-in-k-group/?utm_source=LCUS&utm_medium=ip_redirect&utm_campaign=transfer2china

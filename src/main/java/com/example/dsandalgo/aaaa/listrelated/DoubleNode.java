@@ -1,4 +1,4 @@
-package com.example.dsandalgo.aaaa.listRelated;
+package com.example.dsandalgo.aaaa.listrelated;
 
 public class DoubleNode<T> {
     public T value;
