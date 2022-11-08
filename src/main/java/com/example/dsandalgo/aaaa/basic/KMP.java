@@ -37,7 +37,13 @@ public class KMP {
     }
 
 
-
+    /**
+     *
+     * a b c e 1 2 3 2 1
+     *
+     * @param match
+     * @return
+     */
     //对于每一个位置i而言，求从0...i-1位置所组成的字符串的前缀和后缀的最长公共子串，不包含所有。
     public static int[] getNextArray(char[] match){
         if (match.length == 1 ){
