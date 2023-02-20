@@ -1,7 +1,5 @@
 package com.example.dsandalgo.aaaa.basic;
 
-import org.apache.logging.log4j.util.Strings;
-
 /**
  * kmp算法
  * a) 给一个字符串，对于每一个i位置的字符，都可以有一个值：从0...i-1位置字符所组成的字符串前缀和后缀的最长公共子串，不包含所有，作为i的next值。
