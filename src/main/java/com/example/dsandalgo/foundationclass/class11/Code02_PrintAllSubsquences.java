@@ -1,7 +1,8 @@
 package com.example.dsandalgo.foundationclass.class11;
 
 
-import org.springframework.util.StringUtils;
+
+import com.sun.deploy.util.StringUtils;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -55,9 +56,7 @@ public class Code02_PrintAllSubsquences {
 
 
     public static List<String> subsNoRepeat(String s){
-        if (StringUtils.isEmpty(s)){
-            return null;
-        }
+
         char[] strs = s.toCharArray();
         Set<String> set =  new HashSet<>();
         String path = "";

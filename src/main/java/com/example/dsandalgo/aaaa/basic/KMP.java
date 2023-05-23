@@ -42,7 +42,7 @@ public class KMP {
      * @param match
      * @return
      */
-    //对于每一个位置i而言，求从0...i-1位置所组成的字符串的前缀和后缀的最长公共子串，不包含所有。
+    //对于每一个位置i而言，求从0...i-1位置所组成的字符串的前缀和后缀的最长公共子串长度，不包含所有。
     public static int[] getNextArray(char[] match){
         if (match.length == 1 ){
             return new int[]{-1};
@@ -59,8 +59,7 @@ public class KMP {
             }else if (cn > 0){
                 //cn = next[i-1];
                 cn = next[cn];
-            }
-            else {
+            } else {
                next[i++] = 0;
             }
         }
@@ -79,7 +78,7 @@ public class KMP {
     }
 
     public static void main(String[] args) {
-        int possibilities = 5;
+        /*int possibilities = 5;
         int strSize = 20;
         int matchSize = 5;
         int testTimes = 10000;
@@ -90,7 +89,12 @@ public class KMP {
                 System.out.println("Oops!");
             }
         }
-        System.out.println("finished");
+        System.out.println("finished");*/
+        System.out.println(Integer.bitCount(-1));
+        System.out.printf( Integer.toBinaryString(-1));
+
+
+
     }
 
 

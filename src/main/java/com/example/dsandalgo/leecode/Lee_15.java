@@ -1,6 +1,5 @@
 package com.example.dsandalgo.leecode;
 
-import org.springframework.util.CollectionUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -17,7 +16,7 @@ public class Lee_15 {
             return null;
         }
 
-        Collections.sort(CollectionUtils.arrayToList(nums));
+        Arrays.sort(nums);
         List<List<Integer>> res = new ArrayList<>();
 
         for (int i = 0; i < nums.length; i++) {

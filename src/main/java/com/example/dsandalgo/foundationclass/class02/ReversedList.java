@@ -1,7 +1,5 @@
 package com.example.dsandalgo.foundationclass.class02;
 
-import java.util.LinkedList;
-
 public class ReversedList {
 
     public Node reverseNode(Node head){
@@ -79,7 +77,47 @@ public class ReversedList {
 
         }
         return cur;
+    }
 
+
+    public DoubleNode reverseDoubleV3(DoubleNode head){
+        if (head == null){
+            return null;
+        }
+
+        DoubleNode pre = null;
+        DoubleNode cur = head;
+        while (cur.next != null){
+            DoubleNode temp = cur.next;
+            cur.next = pre;
+            cur.last = temp;
+            pre = cur;
+            cur =temp;
+
+        }
+
+        return cur;
+
+
+
+
+    }
+
+    public Node reverseNodeV3(Node head){
+        if (head == null || head.next == null){
+            return null;
+        }
+        Node cur = head;
+        Node pre =null;
+        while (cur.next != null){
+            Node temp = cur.next;
+            cur.next = pre;
+            pre = cur;
+            cur = temp;
+
+
+        }
+        return cur;
 
 
 

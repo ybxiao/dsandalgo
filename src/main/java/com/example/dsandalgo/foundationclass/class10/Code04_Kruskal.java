@@ -1,7 +1,5 @@
 package com.example.dsandalgo.foundationclass.class10;
 
-import org.springframework.util.CollectionUtils;
-
 import java.util.*;
 
 /**
@@ -108,7 +106,7 @@ public class Code04_Kruskal {
     public static Set<Edge>  kruskalMST(Graph graph){
         List<Edge> edges = graph.edges;
         Set<Edge> result = new HashSet<>();
-        List list = CollectionUtils.arrayToList(graph.nodes.values().stream().toArray());
+        List list = Arrays.asList(graph.nodes.values().toArray());
         UnionSet<com.example.dsandalgo.foundationclass.class10.Node> edgeUnionSet = new UnionSet(list);
 
         Collections.sort(edges,new MyComparator());
