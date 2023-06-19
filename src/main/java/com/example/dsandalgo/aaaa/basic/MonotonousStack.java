@@ -75,8 +75,8 @@ public class MonotonousStack {
 
                 int leftNearLess = stack.isEmpty() ? -1 : stack.peek().get(stack.peek().size() - 1);
                 for (int j = 0; j < pop.size(); j++) {
-                    res[j][0] = i;
-                    res[j][1] = leftNearLess;
+                    res[pop.get(j)][0] = leftNearLess;
+                    res[pop.get(j)][1] = i;
                 }
             }
             if (!stack.isEmpty() && arr[stack.peek().get(0)] == arr[i]) {
@@ -90,11 +90,10 @@ public class MonotonousStack {
         }
         while (!stack.isEmpty()) {
             List<Integer> popped = stack.pop();
-            int right = -1;
             int left = stack.isEmpty() ? -1 : stack.peek().get(stack.peek().size() - 1);
             for (int i = 0; i < popped.size(); i++) {
-                res[i][0] = right;
-                res[i][1] = left;
+                res[popped.get(i)][0] = left;
+                res[popped.get(i)][1] = -1;
             }
         }
         return res;
@@ -102,11 +101,11 @@ public class MonotonousStack {
 
     public static int[] getRandomArrayNoRepeat(int size) {
         int[] res = new int[(int) (Math.random() * size) + 1];
-        for (int i = 0; i < size; i++) {
+        for (int i = 0; i < res.length; i++) {
             res[i] = i;
         }
-        for (int i = 0; i < size; i++) {
-            int swapIndex = (int) (Math.random() * size);
+        for (int i = 0; i < res.length; i++) {
+            int swapIndex = (int) (Math.random() * res.length);
             int temp = res[swapIndex];
             res[swapIndex] = res[i];
             res[i] = temp;
@@ -139,9 +138,46 @@ public class MonotonousStack {
 
     public static void printArray(int[] arr){
         for (int i = 0; i < arr.length; i++) {
-            System.out.print(arr[i] + " ");
+            System.out.print(arr[i] + ", ");
         }
         System.out.println();
+    }
+    public static void printMatrix(int[][] matrix){
+        for (int i = 0; i < matrix.length; i++) {
+            System.out.print("[" +matrix[i][0] + ","+ matrix[i][1] + "]");
+        }
+        System.out.println("");
+    }
+
+    public static void main(String[] args) {
+        int size = 10;
+        int maxValue = 20;
+        int testTimes = 100000;
+        for (int i = 0; i < testTimes; i++) {
+            int[] repeatArray = getRandomArray(size, maxValue);
+            int[] noRepeatArray = getRandomArrayNoRepeat(size);
+            int[][] ans1 = rightWay(repeatArray);
+            int[][] ans2 = getNearLess(repeatArray);
+            int[][] ans3 = rightWay(noRepeatArray);
+            int[][] ans4 = getNearLessNoRepeat(noRepeatArray);
+            if (!isEqual(ans1,ans2)){
+                printArray(repeatArray);
+                System.out.println("oops1");
+                break;
+            }
+            if (!isEqual(ans3,ans4)){
+                printArray(noRepeatArray);
+                System.out.println("oops2");
+                break;
+            }
+
+
+
+        }
+        System.out.println("finished");
+        int[] arr = new int[]{4, 1, 9, 8, 0, 6, 7, 5, 2, 3};
+        printMatrix(getNearLessNoRepeat(arr));
+        printMatrix(rightWay(arr));
     }
 
 }
