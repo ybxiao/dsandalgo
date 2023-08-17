@@ -8,70 +8,57 @@ package com.example.dsandalgo.aaaa.basic;
 public class KMP {
 
 
-    public static int getIndexOf(String str , String match){
-        if (str.length() == 0 || match.length() ==0 || match.length() > str.length()){
-            return -1;
+    public static int indexOf(String source, String match) {
+        if (source == null || match == null || source.length() < match.length()) {
+            return 0;
         }
-        char[] strChar = str.toCharArray();
-        char[] matchChar = match.toCharArray();
-        int[] next = getNextArray(matchChar);
-        int i  = 0;
+        char[] sourceCharArray = source.toCharArray();
+        char[] matchCharArray = match.toCharArray();
+        int[] nextArray = getNextArray(matchCharArray);
+        int i = 0;
         int j = 0;
-        while (i < strChar.length && j < matchChar.length){
-            if (strChar[i] == matchChar[j]){
+        while (i < source.length() && j < match.length()){
+            if (sourceCharArray[i] == matchCharArray[j]){
                 i++;
                 j++;
-            }else if (next[j] == -1){
-                i++;
+            }else if (nextArray[j] >= 0){
+               j = nextArray[j];
             }else{
-               j = next[j];
+                i++;
             }
         }
 
-        return  j == matchChar.length ? i -j : -1;
-
-
+        return j == match.length() ? j -i : 0;
 
     }
 
 
-    /**
-     *
-     * a b c e 1 2 3 2 1
-     *
-     * @param match
-     * @return
-     */
-    //对于每一个位置i而言，求从0...i-1位置所组成的字符串的前缀和后缀的最长公共子串长度，不包含所有。
-    public static int[] getNextArray(char[] match){
-        if (match.length == 1 ){
-            return new int[]{-1};
-        }
-        int[] next = new int[match.length];
-        next[0] = -1;
-        next[1] = 0;
-        int  i = 2;
-        //cn代表的含义是什么？ 表示哪个位置上的值在和match[i-1]进行比较
-        int  cn = 0;
-        while (i < match.length) {
-            if (match[cn] == match[i-1]){
-                next[i++] = ++cn;
-            }else if (cn > 0){
-                //cn = next[i-1];
-                cn = next[cn];
+    //生成匹配串的next数组
+    public static int[] getNextArray(char[] match) {
+        int n = match.length;
+        int[] nextArray = new int[n];
+        nextArray[0] = -1;
+        nextArray[1] = 0;
+        int cn = 0;
+
+        for (int index = 2; index < n; index++) {
+            if (match[index - 1] == match[cn]) {
+                nextArray[index++] = ++cn;
+            } else if (cn > 0) {
+                cn = nextArray[cn];
             } else {
-               next[i++] = 0;
+                nextArray[index++] = 0;
             }
-        }
 
-        return next;
+        }
+        return nextArray;
     }
 
 
-    public static String getRandomString(int possibilities, int size){
+    public static String getRandomString(int possibilities, int size) {
         char[] chars = new char[(int) (Math.random() * size + 1)];
         for (int i = 0; i < chars.length; i++) {
-            chars[i] = (char) ( (int)(Math.random() * possibilities + 1) + 'a');
+            chars[i] = (char) ((int) (Math.random() * possibilities + 1) + 'a');
         }
         return String.valueOf(chars);
 
@@ -91,8 +78,7 @@ public class KMP {
         }
         System.out.println("finished");*/
         System.out.println(Integer.bitCount(-1));
-        System.out.printf( Integer.toBinaryString(-1));
-
+        System.out.printf(Integer.toBinaryString(-1));
 
 
     }

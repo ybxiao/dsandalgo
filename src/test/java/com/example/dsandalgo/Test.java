@@ -1,10 +1,6 @@
 package com.example.dsandalgo;
 
 
-import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
-
-import java.util.concurrent.*;
-
 public class Test {
     public static void swap(int a, int b) {
         int t = a;
