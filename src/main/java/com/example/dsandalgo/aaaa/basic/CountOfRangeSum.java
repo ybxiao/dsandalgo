@@ -28,6 +28,7 @@ public class CountOfRangeSum {
             return sums[left] >= lower && sums[left] <= upper ? 1 : 0;
         }
         int middle = left + (right - left) >> 2;
+
         return process(sums, left, middle, lower, upper) + process(sums, middle, right, lower, upper)
                 + merge(sums, left, middle, right, lower, upper);
     }

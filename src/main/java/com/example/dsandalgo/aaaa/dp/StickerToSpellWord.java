@@ -20,8 +20,8 @@ public class StickerToSpellWord {
 
     // 尝试
     // 从第一张贴纸开始试
-    // 先试使用一张第一张贴纸的情况，使用二张第二张贴纸的情况，一直到 n张第一张贴纸的情况
-    // 当前帖子完全不能减少剩余字符串字符的时候，停止尝试，换另一张贴纸
+    // 先试使用一张第一张贴纸的情况，使用二张第一张贴纸的情况，一直到 n张第一张贴纸的情况
+    // 当前贴纸完全不能减少剩余字符串字符的时候，停止尝试，换另一张贴纸
     private static int process1(String[] stickers, String target) {
         // 无效参数过滤，如果
         if (target.length() == 0) {

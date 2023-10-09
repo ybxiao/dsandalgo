@@ -8,7 +8,7 @@ package com.example.dsandalgo.aaaa.dp;
  * <p> 全样本对应模型
  * https://leetcode.com/problems/longest-common-subsequence/
  */
-public class LongestCommonSubsequence {
+public class LongestCommonSubsequenceCopy2023 {
 
     public static int longestCommonSubsequence1(String str1, String str2) {
         if (str1 == null || str2 == null || str1.length() == 0 || str2.length() == 0) {

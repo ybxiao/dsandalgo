@@ -23,7 +23,7 @@ public class Code03_DFS {
                     pop.nexts) {
                 if (!set.contains(n)){
                     set.add(n);
-                    stack.push(pop);
+                    //stack.push(pop);
                     stack.push(n);
                     System.out.println(n.v);
                     break;

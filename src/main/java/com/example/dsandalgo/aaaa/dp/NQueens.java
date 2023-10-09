@@ -34,23 +34,16 @@ public class NQueens {
     }
 
     private static boolean valid(int[] record, int i, int j) {
-        while (i >= 0 & j >= 0) {
-            if (record[i--] == j--) {
+        for (int k = 0; k < i; k++) {
+            if (j == record[k] || Math.abs(record[k] - j) == Math.abs(i - k)) {
                 return false;
             }
         }
-        while (i >= 0 && j <= record.length) {
-            if (record[i--] == j++) {
-                return false;
-            }
-        }
-        while (i >= 0) {
-            if (record[i--] == j) {
-                return false;
-            }
-        }
-
         return true;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(nums1(4));
     }
 
 

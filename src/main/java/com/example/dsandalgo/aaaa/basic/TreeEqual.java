@@ -64,7 +64,7 @@ public class TreeEqual {
             }
         }
 
-        return j == match.size() ? i - j : 0;
+        return j == match.size() ? i - j : -1;
 
     }
 
@@ -125,10 +125,12 @@ public class TreeEqual {
         TreeNode node2 = new TreeNode(5);
         TreeNode node3 = new TreeNode(1);
         TreeNode node4 = new TreeNode(2);
+        TreeNode node5 = new TreeNode(0);
         head1.left = node1;
         head1.right = node2;
         node1.left = node3;
         node1.right = node4;
+        node4.left = node5;
 
         TreeNode head2 = new TreeNode(4);
         TreeNode node21 = new TreeNode(1);

@@ -67,7 +67,7 @@ public class FindFirstIntersectNode {
                n--;
                cur2 =  cur2.next;
            }
-           cur1 = n > 0 ? head1 :head1;
+           cur1 = n > 0 ? head1 :head2;
            cur2 = cur1 == head1 ? head2 :head1;
            while (cur1 != cur2){
                cur1 = cur1.next;

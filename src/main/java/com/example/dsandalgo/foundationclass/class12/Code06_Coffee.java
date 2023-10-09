@@ -37,7 +37,7 @@ public class Code06_Coffee {
         //决定机器洗
         //wash 代表用当前咖啡杯用咖啡机 所需要的时间
         int wash  = Math.max(washLine,drinks[index]) +a;
-                int next1 = process(drinks, a, b, index + 1, wash);
+        int next1 = process(drinks, a, b, index + 1, wash);
         int p1 = Math.max(wash,next1);
         //决定挥发
         int dry = drinks[index] +b;

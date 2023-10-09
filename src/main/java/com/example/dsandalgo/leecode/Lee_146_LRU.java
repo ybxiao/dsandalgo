@@ -37,7 +37,7 @@ public class Lee_146_LRU {
             }
             DNode dNode = valueMap.get(key);
             DNode pre =  dNode.last;
-            DNode pos = dNode.last;
+            DNode pos = dNode.next;
             pre.next = pos;
             pos.last = pre;
             tail.next = dNode;

@@ -1,5 +1,7 @@
 package com.example.dsandalgo.aaaa.dp;
 
+import com.google.common.collect.Lists;
+
 /**
  * 经典的背包问题
  * 一组货物有：
@@ -76,6 +78,10 @@ public class Knapsack {
         int bag = 15;
         System.out.println(maxValue(weights, values, bag));
         System.out.println(dp(weights, values, bag));
+    }
+
+    public  static void  test(){
+        Lists.newArrayList();
     }
 
 }
