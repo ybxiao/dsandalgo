@@ -68,7 +68,7 @@ public class CoinsWayNoLimitCopy2023 {
             for (int rest = 0; rest <= aim; rest++) {
                 dp[i][rest] = 0;
                 for (int zhang = 0; rest - zhang * arr[i] >= 0; zhang++) {
-                    dp[i][rest] = dp[i + 1][rest - zhang * arr[i]]
+                    dp[i][rest] = dp[i + 1][rest - zhang * arr[i]];
 
                 }
             }
