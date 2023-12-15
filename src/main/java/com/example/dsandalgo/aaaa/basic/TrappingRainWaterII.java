@@ -48,28 +48,28 @@ public class TrappingRainWaterII {
         int max = 0;
         while (!heap.isEmpty()) {
             Node poll = heap.poll();
-            int curMax = Math.max(max, poll.v);
+            max = Math.max(max, poll.v);
             int currRow = poll.row;
             int currCol = poll.col;
             if (currRow > 0 && !sets[currRow - 1][currCol]) {
-                ans += Math.max(heightMatrix[currRow - 1][currCol] - curMax, 0);
+                ans += Math.max(heightMatrix[currRow - 1][currCol] - max, 0);
                 sets[currRow - 1][currCol] = true;
                 heap.add(new Node(heightMatrix[currRow - 1][currCol], currRow - 1, currCol));
             }
 
 
             if (currRow < m - 1 && !sets[currRow + 1][currCol]) {
-                ans += Math.max(heightMatrix[currRow + 1][currCol] - curMax, 0);
+                ans += Math.max(heightMatrix[currRow + 1][currCol] - max, 0);
                 sets[currRow + 1][currCol] = true;
                 heap.add(new Node(heightMatrix[currRow + 1][currCol], currRow + 1, currCol));
             }
             if (currCol > 0 && !sets[currRow][currCol - 1]) {
-                ans += Math.max(heightMatrix[currRow][currCol - 1] - curMax, 0);
+                ans += Math.max(heightMatrix[currRow][currCol - 1] - max, 0);
                 sets[currRow][currCol - 1] = true;
                 heap.add(new Node(heightMatrix[currRow][currCol - 1], currRow, currCol - 1));
             }
             if (currCol < n - 1 && !sets[currRow][currCol + 1]) {
-                ans += Math.max(heightMatrix[currRow][currCol + 1] - curMax, 0);
+                ans += Math.max(heightMatrix[currRow][currCol + 1] - max, 0);
                 sets[currRow][currCol + 1] = true;
                 heap.add(new Node(heightMatrix[currRow][currCol + 1], currRow, currCol + 1));
             }
