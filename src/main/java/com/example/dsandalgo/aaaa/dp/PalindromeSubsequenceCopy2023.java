@@ -40,25 +40,25 @@ public class PalindromeSubsequenceCopy2023 {
     }
 
 
+    //两个可变参数，因此动态规划就是二维的
     public static int lps2(String s) {
-        if (s == null || s.length() < 1) {
+        if (s == null || s.length() == 0) {
             return 0;
         }
-        char[] str = s.toCharArray();
-        int n = str.length;
+        char[] charArray = s.toCharArray();
+        int n = charArray.length;
         int[][] dp = new int[n][n];
         for (int i = 0; i < n; i++) {
             dp[i][i] = 1;
         }
         for (int i = 0; i < n - 1; i++) {
-            dp[i][i + 1] = str[i] == str[i + 1] ? 2 : 1;
+            dp[i][i + 1] = charArray[i] == charArray[i + 1] ? 2 : 0;
         }
-
-        for (int i = n - 3; i >= 0; i--) {
-            for (int j = 0; j < n - 1; j++) {
-                dp[i][j] = Math.max(dp[i + 1][j], dp[i][j - 1]);
-                if (str[i] == str[j]) {
-                    dp[i][j] = Math.max(dp[i][j], (2 + dp[i + 1][j - 1]));
+        for (int i = n - 2; i >= 0; i--) {
+            for (int j = n; j > 2; j--) {
+                dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);
+                if (charArray[i] == charArray[j]) {
+                    dp[i][j] = Math.max(dp[i][j], dp[i - 1][j - 1] + 1);
                 }
             }
 

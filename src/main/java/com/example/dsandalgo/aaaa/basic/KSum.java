@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+//k数之和
 public class KSum {
 
     public List<List<Integer>> kSum(int[] nums, int target, int k) {
