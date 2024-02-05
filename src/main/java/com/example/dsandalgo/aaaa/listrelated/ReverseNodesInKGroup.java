@@ -31,7 +31,7 @@ public class ReverseNodesInKGroup {
         if (end ==null){
             return head;
         }
-        head = end;
+        head = end;//新头
         reverse(start, end);
         ListNode lastEnd = start;
         while (lastEnd.next != null){

@@ -4,25 +4,28 @@ import com.google.common.collect.Sets;
 
 import java.util.*;
 
+//已更正
 public class DFS {
 
-    public static void dfs(Node node){
-        if (node == null){
-            return ;
+    public static void dfs(Node node) {
+        if (node == null) {
+            return;
         }
         Stack<Node> stack = new Stack<>();
-        Set<Node> sets  = new HashSet<>();
+        Set<Node> sets = new HashSet<>();
         stack.push(node);
         sets.add(node);
         System.out.println(node.v);
-        while (!stack.isEmpty()){
+        while (!stack.isEmpty()) {
             Node pop = stack.pop();
             for (Node temp :
                     pop.nexts) {
-                if (!sets.contains(temp)){
+                if (!sets.contains(temp)) {
+                    stack.push(pop);
                     stack.push(temp);
                     sets.add(temp);
                     System.out.println(temp.v);
+                    break;
                 }
 
             }
@@ -31,15 +34,11 @@ public class DFS {
     }
 
 
-
-
-
-
     public class Node {
         public int v;
         public List<Node> nexts;
 
-        public Node(int v){
+        public Node(int v) {
             this.v = v;
             nexts = new ArrayList<>();
         }
