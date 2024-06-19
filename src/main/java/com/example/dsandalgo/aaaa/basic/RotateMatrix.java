@@ -23,20 +23,23 @@ public class RotateMatrix {
         int c = matrix.length;
         int d = matrix[0].length;
         while (a < c) {//此处的循环条件也可以修改为 b < d
-            printEdge(matrix, a++, b++, c--, d--);
+            rotate(matrix, a++, b++, c--, d--);
         }
 
     }
 
-    private static void printEdge(int[][] matrix, int a, int b, int c, int d) {
+    public static void rotate(int[][] matrix, int a, int b, int c, int d) {
+        int temp = 0;
         for (int i = 0; i < d - b; i++) {
-            int temp = matrix[a][b + i];
-            matrix[a + i][b] = matrix[c - i][d];
-            matrix[c + i][d] = matrix[c][d - i];
-            matrix[c][d - i] = matrix[c - i][d];
-            matrix[c - i][d] = temp;
-
+            temp = matrix[a][b + i];
+            matrix[a][b + i] = matrix[c - i][b];
+            matrix[c -i][b]  = matrix[c][d - i];
+            matrix[c][d - i] = matrix[a + i][d];
+            matrix[a + i][d] = temp;
         }
 
+
     }
+
+
 }
